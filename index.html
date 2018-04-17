@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Thing Fixer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js"></script>
+</head>
+
+<body>
+    <h1>Bank Thing Fixer</h1>
+    <div id="app">
+        <header>
+            <span class="original" v-on:click="displayOriginal = true">View Original Version</span>
+            <span class="fixed" v-on:click="displayOriginal = false">View Fixed Version</span>
+        </header>
+        <div class="original" v-if="displayOriginal">
+            <pre>{{ fileText }}</pre>
+        </div>
+        <div class="fixed" v-if="! displayOriginal">
+            <pre>{{ fileTextUpdated }}</pre>
+        </div>
+        <input type="file" ref="fileInput" @change="handleNewFile">
+        <button v-on:click="handleSaveButton">Save as...</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
